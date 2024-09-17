@@ -8,17 +8,23 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <canvas id = "puzzle" width = "400" height = "350"></canvas>
         <canvas id = "house" width = "400" height = "350"></canvas>
+        <canvas id = "puzzle" width = "400" height = "350"></canvas>
 
         <br/>
         <p>   
             &emsp; &emsp; Collapse                                         
             &emsp;  <input id = "rotate" type = "range" min = "0" max = "200"/>
             &ensp; Expand
-            &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; Collapse                                         
-            &emsp;  <input id = "rotate2" type = "range" min = "0" max = "200"/>
-            &ensp; Expand
+            &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; <input id = "sliderX" type = "range" min = "-50" max = "325"/>
+        </p>
+        <br/>
+        <p>            
+            &emsp; &emsp; &emsp; &emsp; &emsp; 
+            &emsp; &emsp; &emsp; &emsp; &emsp; 
+            &emsp; &emsp; &emsp; &emsp; &emsp; 
+            &emsp; &emsp; &emsp; &emsp; &emsp; 
+            &emsp; &ensp; &ensp;<input id = "sliderY" type = "range" min = "-125" max = "200"/>
         </p>
         <script src="polygons.js"></script>
     </body>
