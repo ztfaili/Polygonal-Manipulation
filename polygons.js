@@ -167,37 +167,34 @@ function setup() {
             drawSquare('red');
             context.restore();
         }
-        
+
         if(collidedTopX()) {
             context.save();
-            context.translate(175, dy);
+            context.translate(0, 0);
             drawSquare('red');
             context.restore();
-            sliderX.value = 175;
+            sliderX.value = 0;
+            sliderY.value = 0;
+
         }
 
         if(collidedTopY()) {
             context.save();
-            context.translate(dx, 60);
+            context.translate(0, 0);
             drawSquare('red');
             context.restore();
-            sliderY.value = 60;
+            sliderX.value = 0;
+            sliderY.value = 0;
         }
 
         if(collidedMiddleX()) {
             context.save();
-            context.translate(225, dy); 
+            context.translate(0, 0); 
             drawSquare('red');
             context.restore();
-            sliderX.value = 225;
+            sliderX.value = 0;
+            sliderY.value = 0;
         }
-        /*
-        else {
-            context.save();
-            context.translate(dx, dy);
-            drawSquare('red');
-            context.restore();
-        } */
     }
 
     drawHouse();
