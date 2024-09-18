@@ -94,16 +94,112 @@ function setup() {
         
         function drawSquare(color) {
             context.fillStyle = color;
-            context.fillRect(50, 200, 25, 25);
+            context.fillRect(0, 0, 25, 25);
         }
 
+        function drawPath() {
+            // draw bottom part of path
+            context.beginPath();
+            context.fillStyle = 'purple';
+            context.moveTo(200, 350);
+            context.lineTo(200, 300);
+            context.lineTo(250, 300);
+            context.lineTo(250, 250);
+            context.lineTo(400, 250);
+            context.lineTo(400, 350);
+            context.closePath();
+            context.fill();
+
+            // draw top part of path
+            context.beginPath();
+            context.fillStyle = 'purple';
+            context.moveTo(200, 0);
+            context.lineTo(200, 50);
+            context.lineTo(250, 50);
+            context.lineTo(250, 200);
+            context.lineTo(400, 200);
+            context.lineTo(400, 0);
+            context.closePath();
+            context.fill();
+        }
+
+        function collidedTopX() {
+            var xPos = sliderX.value;
+            var yPos = sliderY.value;
+
+            // collision of box with top path
+            if(xPos >= 175 && (yPos >= 0 && yPos <= 50)) {
+                return true;
+            }
+            else if(xPos >= 175 && (yPos >= 275 && yPos <= 350)) {
+                return true;
+            }
+        }
+        function collidedTopY()  {
+            var xPos = sliderX.value;
+            var yPos = sliderY.value;
+            // collision of box with top path
+            if(yPos <= 50 && (xPos > 175 && xPos <= 250)) {
+                return true;
+            }
+        }
+
+        function collidedMiddleX() {
+            var xPos = sliderX.value;
+            var yPos = sliderY.value;
+
+            // collision of box with middle path
+            if(xPos >= 225 && (yPos >= 50 && yPos <= 200)) {
+                return true;
+            }
+            else if(xPos >= 225 && (yPos >= 225 && yPos <= 300)) {
+                return true;
+            }
+        }
         
-        context.save();
-        context.translate(dx, -dy);
-        drawSquare('red');
-        context.restore();
-    
+        drawPath();
+
+        if(!collidedTopX() && !collidedMiddleX() && !collidedTopY()) {
+            dx = sliderX.value;
+            dy = sliderY.value;
+            context.save();
+            context.translate(dx, dy);
+            drawSquare('red');
+            context.restore();
+        }
+        
+        if(collidedTopX()) {
+            context.save();
+            context.translate(175, dy);
+            drawSquare('red');
+            context.restore();
+            sliderX.value = 175;
+        }
+
+        if(collidedTopY()) {
+            context.save();
+            context.translate(dx, 60);
+            drawSquare('red');
+            context.restore();
+            sliderY.value = 60;
+        }
+
+        if(collidedMiddleX()) {
+            context.save();
+            context.translate(225, dy); 
+            drawSquare('red');
+            context.restore();
+            sliderX.value = 225;
+        }
+        /*
+        else {
+            context.save();
+            context.translate(dx, dy);
+            drawSquare('red');
+            context.restore();
+        } */
     }
+
     drawHouse();
     drawPuzzle();
 }
